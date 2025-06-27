@@ -1,38 +1,3 @@
-# Processo seletivo - QA
-
-Bem vindo, candidato. 
-
-Estamos felizes que você esteja participando do processo seletivo para a vaga de QA do Senai - Soluções Digitais.
-
-A prova deverá utilizar as seguintes tecnologias: 
-- Linguagem de programação orientada a objeto
-- Banco de dados PostgreSQL
-- GIT
-
-Na etapa da entrevista deverá ser apresentado a aplicação em funcionamento.
-
-## Instruções para a execução da prova
-
-***O documento com o estudo de caso do que precisa ser desenvolvido será enviado por e-mail no horário previsto em edital.***
-
-A prova será uma aplicação web dividida em backend e frontend. O sistema deve ser desenvolvido utilizando uma das seguintes linguagens orientadas a objeto: Java, PHP ou Javascript. O backend e frontend podem ser de linguagens diferentes. O banco de dados deverá ser o PostgreSQL.
-
-Fica a escolha do candidato quais frameworks e servidores serão utilizados, desde que seja uma aplicação web. 
-
-***O Banco utilizado na prova deverá ser PostgreSQL.***
-
-Esse repositório possui apenas esse Readme com as instruções da prova. No entanto, **todo desenvolvimento deve ser commitado nesse repositório** até a data citada no edital.
-
-Por fim, altere esse arquivo com as instruções de como poderemos testar o seu código (quais libs usar, qual servidor, etc) abaixo.
-
-## Informações extras
-
-- Descreva ao final deste documento (Readme.md) o detalhamento de funcionalidades implementadas, sejam elas já descritas na modelagem e / ou extras.
-- Detalhar também as funcionalidades que não conseguiu implementar e o motivo.
-- Caso tenha adicionado novas libs ou frameworks, descreva quais foram e porque dessa agregação.
-
-(Escreva aqui as instruções para que possamos corrigir sua prova, bem como qualquer outra observação sobre a prova que achar pertinente compartilhar)
-
 # ☕ Sistema de Montagem de Café
 
 Este projeto permite ao usuário montar cafés personalizados ou identificar sabores clássicos com base nos ingredientes selecionados. Backend em Java + Spring Boot, frontend em React, banco de dados PostgreSQL e orquestração via Docker.
@@ -48,10 +13,10 @@ Este projeto permite ao usuário montar cafés personalizados ou identificar sab
 
 ```bash
 #1 Clone o repositório do projeto
-git clone https://github.com/SENAI-SD/qa-junior-00925-2025-089.039.185-84.git
+git clone https://github.com/IsraelOliveir4/SistemaParaCafeteria.git
 
 #2 Entre no diretorio do projeto
-cd qa-junior-01452-2025-089.039.185-84
+cd SistemaParaCafeteria
 
 #3 Inicie os containers
 docker-compose up --build
