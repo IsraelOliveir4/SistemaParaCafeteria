@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet id="004" author="seunome">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="sabor_classico"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="sabor_classico">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="nome" type="VARCHAR(100)"/>
+      <column name="preco" type="DECIMAL(10,2)"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="005" author="seunome">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="sabor_ingredientes"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="sabor_ingredientes">
+      <column name="sabor_id" type="BIGINT"/>
+      <column name="ingrediente_id" type="BIGINT"/>
+    </createTable>
+  </changeSet>
+
+  <!-- Inserir sabores clássicos somente se a tabela estiver vazia -->
+  <changeSet id="006" author="seunome">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <rowCount tableName="sabor_classico" expectedRows="1"/>
+      </not>
+    </preConditions>
+
+    <!-- Latte: Espresso (1), Leite (2) -->
+    <insert tableName="sabor_classico">
+      <column name="id" value="1"/>
+      <column name="nome" value="Latte"/>
+      <column name="preco" value="8.00"/>
+    </insert>
+
+    <insert tableName="sabor_ingredientes">
+      <column name="sabor_id" value="1"/>
+      <column name="ingrediente_id" value="1"/>
+    </insert>
+    <insert tableName="sabor_ingredientes">
+      <column name="sabor_id" value="1"/>
+      <column name="ingrediente_id" value="2"/>
+    </insert>
+
+    <!-- Americano: Espresso (1), Água (3) -->
+    <insert tableName="sabor_classico">
+      <column name="id" value="2"/>
+      <column name="nome" value="Americano"/>
+      <column name="preco" value="6.00"/>
+    </insert>
+
+    <insert tableName="sabor_ingredientes">
+      <column name="sabor_id" value="2"/>
+      <column name="ingrediente_id" value="1"/>
+    </insert>
+    <insert tableName="sabor_ingredientes">
+      <column name="sabor_id" value="2"/>
+      <column name="ingrediente_id" value="3"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

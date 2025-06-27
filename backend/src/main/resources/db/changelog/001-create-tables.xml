@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="001" author="seunome">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ingrediente"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ingrediente">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+            <column name="tipo" type="VARCHAR(50)"/>
+            <column name="custo" type="DECIMAL(10,2)"/>
+            <column name="estoque" type="INTEGER"/>
+            <column name="preco" type="DECIMAL(10,2)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="002" author="seunome">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sabor_classico"/>
+            </not>
+        </preConditions>
+        <createTable tableName="sabor_classico">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

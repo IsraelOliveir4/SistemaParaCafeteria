@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="003" author="seunome">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <and>
+                    <rowCount tableName="ingrediente" expectedRows="3"/>
+                </and>
+            </not>
+        </preConditions>
+
+        <insert tableName="ingrediente">
+            <column name="nome" value="Espresso"/>
+            <column name="tipo" value="base"/>
+            <column name="custo" value="1.50"/>
+            <column name="estoque" value="100"/>
+            <column name="preco" value="3.00"/>
+        </insert>
+
+        <insert tableName="ingrediente">
+            <column name="nome" value="Leite"/>
+            <column name="tipo" value="base"/>
+            <column name="custo" value="1.00"/>
+            <column name="estoque" value="80"/>
+            <column name="preco" value="2.50"/>
+        </insert>
+
+        <insert tableName="ingrediente">
+            <column name="nome" value="Água"/>
+            <column name="tipo" value="base"/>
+            <column name="custo" value="1.00"/>
+            <column name="estoque" value="60"/>
+            <column name="preco" value="2.50"/>
+        </insert>
+
+        <insert tableName="ingrediente">
+            <column name="nome" value="Chocolate"/>
+            <column name="tipo" value="extra"/>
+            <column name="custo" value="0.80"/>
+            <column name="estoque" value="50"/>
+            <column name="preco" value="1.50"/>
+        </insert>
+
+        <insert tableName="ingrediente">
+            <column name="nome" value="Canela"/>
+            <column name="tipo" value="extra"/>
+            <column name="custo" value="0.80"/>
+            <column name="estoque" value="50"/>
+            <column name="preco" value="1.50"/>
+        </insert>
+
+        <insert tableName="ingrediente">
+            <column name="nome" value="Chantilly"/>
+            <column name="tipo" value="extra"/>
+            <column name="custo" value="0.80"/>
+            <column name="estoque" value="50"/>
+            <column name="preco" value="1.50"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

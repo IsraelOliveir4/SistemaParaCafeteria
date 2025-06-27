@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+       http://www.liquibase.org/xml/ns/dbchangelog
+       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+  <!-- Criação da tabela pedido -->
+  <changeSet id="20250622-01-criar-tabela-pedido" author="seunome">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="pedido"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="pedido">
+      <column name="id" type="bigserial">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="preco" type="decimal(10,2)">
+        <constraints nullable="false" />
+      </column>
+      <column name="sabor_classico_id" type="bigint"/>
+    </createTable>
+
+    <addForeignKeyConstraint 
+      baseTableName="pedido" 
+      baseColumnNames="sabor_classico_id" 
+      referencedTableName="sabor_classico" 
+      referencedColumnNames="id"
+      constraintName="fk_pedido_sabor_classico"
+      onDelete="SET NULL"/>
+  </changeSet>
+
+  <!-- Criação da tabela associativa pedido_ingredientes_base -->
+  <changeSet id="20250622-02-criar-tabela-pedido-ingredientes-base" author="seunome">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="pedido_ingredientes_base"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="pedido_ingredientes_base">
+      <column name="pedido_id" type="bigint">
+        <constraints nullable="false" />
+      </column>
+      <column name="ingrediente_id" type="bigint">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+
+    <addPrimaryKey columnNames="pedido_id, ingrediente_id" constraintName="pk_pedido_ingredientes_base" tableName="pedido_ingredientes_base"/>
+
+    <addForeignKeyConstraint
+      baseTableName="pedido_ingredientes_base"
+      baseColumnNames="pedido_id"
+      referencedTableName="pedido"
+      referencedColumnNames="id"
+      constraintName="fk_pedido_base_pedido"
+      onDelete="CASCADE" />
+
+    <addForeignKeyConstraint
+      baseTableName="pedido_ingredientes_base"
+      baseColumnNames="ingrediente_id"
+      referencedTableName="ingrediente"
+      referencedColumnNames="id"
+      constraintName="fk_pedido_base_ingrediente"
+      onDelete="CASCADE" />
+  </changeSet>
+
+  <!-- Criação da tabela associativa pedido_ingredientes_extras -->
+  <changeSet id="20250622-03-criar-tabela-pedido-ingredientes-extras" author="seunome">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="pedido_ingredientes_extras"/>
+      </not>
+    </preConditions>
+
+    <createTable tableName="pedido_ingredientes_extras">
+      <column name="pedido_id" type="bigint">
+        <constraints nullable="false" />
+      </column>
+      <column name="ingrediente_id" type="bigint">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+
+    <addPrimaryKey columnNames="pedido_id, ingrediente_id" constraintName="pk_pedido_ingredientes_extras" tableName="pedido_ingredientes_extras"/>
+
+    <addForeignKeyConstraint
+      baseTableName="pedido_ingredientes_extras"
+      baseColumnNames="pedido_id"
+      referencedTableName="pedido"
+      referencedColumnNames="id"
+      constraintName="fk_pedido_extras_pedido"
+      onDelete="CASCADE" />
+
+    <addForeignKeyConstraint
+      baseTableName="pedido_ingredientes_extras"
+      baseColumnNames="ingrediente_id"
+      referencedTableName="ingrediente"
+      referencedColumnNames="id"
+      constraintName="fk_pedido_extras_ingrediente"
+      onDelete="CASCADE" />
+  </changeSet>
+
+</databaseChangeLog>
