@@ -42,11 +42,8 @@ docker-compose up --build
 
 ## 🔍 Melhorias observadas na revisão de código
 
-- Substituição de IDs fixos por dados dinâmicos do backend
-- Padronização de nomes e componentes React
-- Tratamento de erros em chamadas de API
-- Separação de responsabilidades entre frontend e backend
-
+- Inserir painel de administradores para cadastrar novos sabores
+- Inserir tela de login
 ---
 
 ## 📘 Especificações de uso (Gherkin)
@@ -77,27 +74,6 @@ Feature: Montar café com ingredientes base e extras
 - Este `README.md` está versionado no repositório na raiz do projeto.
 - Scripts Liquibase: `backend/src/main/resources/db/changelog`
 - Componentes React organizados em `frontend/src/components`
-
----
-
-## ❌ Requisitos não atendidos e justificativas
-
-- Integração com SonarQube não foi incluída devido à limitação de tempo e ambiente
-- Login/autenticação de usuário não foi implementado por não ser requisito central da funcionalidade de montagem de café
-
----
-
-## 🐞 Bug funcional identificado
-
-- Ao atualizar ingredientes diretamente no banco, sem reiniciar o backend, sabores clássicos podem não ser detectados corretamente.  
-  **Justificativa**: a lógica depende de dados consistentes sincronizados entre banco e cache (caso implementado futuramente).
-
----
-
-## 🛠️ (Diferencial) SonarQube - Relatório de Qualidade
-
-**[Não incluído neste projeto]**  
-Caso desejado, pode-se configurar SonarQube localmente e integrar ao pipeline de build com plugins Maven/Gradle.
 
 ---
 

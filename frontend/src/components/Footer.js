@@ -12,7 +12,7 @@ export default function Footer() {
         marginBottom: 10,
       }}
     >
-      SENAI Soluções Digitais
+      Desenvolvido por: Israel Oliveira
     </footer>
   );
 }
